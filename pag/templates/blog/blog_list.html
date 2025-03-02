@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+   
+    <div id="blog-posts" class="container">
+    <ul>
+        
+        {% if tag %}
+            <h2>
+                Post tagget with "{{ tag.name }}"
+            </h2>
+        {% endif %}
+
+        
+        {% for object in object_list %}
+            <li>
+                <h3><a href="{{object.get_absolute_url }}">{{ object.title }}</a></h3>
+                
+               <p class="tags">Tags: 
+                {% for tag in object.tags.all %}
+                    <a href="{% url "blog:post-list-by-tag" tag.slug %}"> {{ tag.name }}</a>
+                        {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+            </li>
+        {% endfor %}
+    </ul></div>
+
+   
+    
+{% include "blog/includes/pagination.html" %}
+
+    <hr>
+   
+    <div id="other-blog-posts" class="container">
+        <ul>
+            {% for object in other_blog_posts %}
+                <li>
+                    <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
+                   
+                </li>
+            {% endfor %}
+        </ul></div>
+{% include "blog/includes/pagination-two.html" %}
+{% endblock %}

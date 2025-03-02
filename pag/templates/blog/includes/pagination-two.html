@@ -1,0 +1,61 @@
+<!--<div id="pagination_two" class="paginate wrapper"><!-- The "wrapper" is just a comestic addition. You don't need this for the pagination to work. 
+    <ul>
+      {% if other_blog_posts.has_previous %}
+        <li>
+        
+          <a href="?other_page={{other_blog_posts.previous_page_number }}">⟨</a></li>
+      {% endif %}
+        {% for p in other_blog_posts.paginator.page_range %}
+      {% if other_blog_posts.namber == p %} 
+            <li class="page-link rounded-l-md active" aria-current="other_page">{{ p }}</li>
+        {% elif p >= other_blog_posts.number|add:-2 and p <= other_blog_posts.number|add:2 %} 
+            <li class="page-item rounded-l-md">
+             <a class="page-link rounded-l-md" href="?other_page={{ p }}">{{ p }}</a>
+  </li>
+      {% endif %}
+
+      {% endfor %}
+      {% if other_blog_posts.has_next %}
+      <a href="?page={{other_blog_posts.next_page_number }}"> Next </a>
+      <a href="?page={{ other_blog_posts.paginator.num_pages }}">Last</a>
+      <li><a href="">⟩</a></li>
+      {% endif %}
+       
+    </ul>
+</div>-->
+
+
+
+<div id="pagination-two" class="paginate wrapper ">
+<nav aria-label="Page navigation example">
+  <ul class="paginate wrapper">
+      {% if other_blog_posts.has_previous %}
+    <li class="page-item">
+          <a class="page-link" href="{{ request.path }}?other-page=1" aria-label="Previous"><</a>
+          <a href="{{ request.path }}?other-page={{ other_blog_posts.previous_page_number }}">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+      {% endif %}
+    </li>
+    {% for p in other_blog_posts.paginator.page_range %}
+    {% if other_blog_posts.namber == p %} 
+          <li class="page-link rounded-l-md active" aria-current="page">{{ p }}</li>
+      {% elif p >= other_blog_posts.number|add:-2 and p <= other_blog_posts.number|add:2 %} 
+          <li class="page-item rounded-l-md">
+           <a class="page-link rounded-l-md" href="{{ request.path }}?other-page={{ p }}">{{ p }}</a>
+</li>
+    {% endif %}
+
+    {% endfor %}
+    {% if other_blog_posts.has_next %}
+<a class="page-link rounded-l-md" href="{{ request.path }}?other-page={{ other_blog_posts.next_page_number }}"> Next </a>
+<a class="page-link rounded-l-md" href="{{ request.path }}?other-page={{ other_blog_posts.paginator.num_pages }}">Last</a>
+{% endif %} 
+  </ul>
+     
+</nav>
+</div>
+
+<hr>
+
+

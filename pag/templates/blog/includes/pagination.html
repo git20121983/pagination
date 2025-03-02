@@ -1,0 +1,160 @@
+
+
+<!--
+<nav aria-label="Page navigation example">
+    <ul class="paginate wrapper">
+        {% if object_list.has_previous %}
+      <li class="page-item">
+        
+            <a class="page-link" href="{{ request.path }}?page=1" aria-label="Previous"><</a>
+            <a href="{{ request.path }}?page={{ object_list.previous_page_number }}">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+        {% else %}
+        <li class="page-item inactive">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><</a>
+        </li>
+        {% endif %}
+      </li>
+      {% for p in object_list.paginator.page_range %}
+      {% if object_list.namber == p %} 
+            <li class="page-link rounded-l-md active" aria-current="page">{{ p }}</li>
+        {% elif p >= object_list.number|add:-2 and p <= object_list.number|add:2 %} 
+            <li class="page-item rounded-l-md">
+             <a class="page-link rounded-l-md" href="{{ request.path }}?page={{ p }}">{{ p }}</a>
+  </li>
+      {% endif %}
+
+      {% endfor %}
+      {% if object_list.has_next %}
+  <a class="page-link rounded-l-md" href="{{ request.path }}?page={{ object_list.next_page_number }}"> Next </a>
+  <a class="page-link rounded-l-md" href="{{ request.path }}?page={{ object_list.paginator.num_pages }}">Last</a>
+  {% endif %} 
+    </ul>
+       
+  </nav>
+  
+  
+
+  <div class="paginate wrapper"><!-- The "wrapper" is just a comestic addition. You don't need this for the pagination to work. 
+    <ul>
+        <li><a href="">⟨</a></li>
+        <li><a href="">1</a></li>
+        <li><a href="" class="inactive">2</a></li>
+        <li><a href="">3</a></li>
+        <li><a href="" class="active">4</a></li>
+        <li><a href="">5</a></li>
+        <li><a href="" class="more">…</a></li>
+        <li><a href="">98</a></li>
+        <li><a href="">99</a></li>
+        <li><a href="">100</a></li>
+        <li><a href="">⟩</a></li>
+    </ul>
+</div>
+
+
+ <!-- <div id="pagination" class="paginate wrapper"><!-- The "wrapper" is just a comestic addition. You don't need this for the pagination to work. 
+    <ul>
+      {% if object_list.has_previous %}
+        <li>
+          
+          <a href="?page={{ object_list.previous_page_number }}">⟨</a>
+        {% endif %}
+        </li>
+
+      
+        {% for p in object_list.paginator.page_range %}
+      {% if object_list.namber == p %} 
+            <li class="page-link rounded-l-md active" aria-current="page">{{ p }}</li>
+        {% elif p >= object_list.number|add:-2 and p <= object_list.number|add:2 %} 
+            <li class="page-item rounded-l-md">
+             <a class="page-link rounded-l-md" href="?page={{ p }}">{{ p }}</a>
+  </li>
+      {% endif %}
+
+      {% endfor %}
+
+      {% if object_list.has_next %}
+      <a href="?page={{ object_list.next_page_number }}"> Next </a>
+      <a href="?page={{ object_list.paginator.num_pages }}">Last</a>
+      <li><a href="">⟩</a></li>
+      {% endif %}
+        
+    </ul>
+</div>
+
+
+<div class="container mt-5">
+  <nav id ="pagination">
+    <ul class="pagination justify-content-center">
+      {% if object_list.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="{{ request.path }}?page={{ object_list.previous_page_number }}"><</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><</a>
+      </li>
+      {% endif %}
+      {% for p in object_list.paginator.page_range %}
+      {% if object_list.number == p %}
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="{{ request.path }}?page={{ p }}">{{ p }}</a>
+      </li>
+      {% else %}
+      <li class="page-item">
+        <a class="page-link" href="{{ request.path }}?page={{ p }}">{{ p }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+
+      {% if object_list.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="{{ request.path }}?page={{ object_list.next_page_number }}" aria-label="Next">></a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">></a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>-->
+
+
+
+
+<div id="pagination" class="paginate wrapper">
+<nav aria-label="Page navigation example">
+  <ul class="paginate wrapper">
+      {% if object_list.has_previous %}
+    <li class="page-item">
+      
+          <a class="page-link" href="{{ request.path }}?page=1" aria-label="Previous"><</a>
+          <a href="{{ request.path }}?page={{ object_list.previous_page_number }}">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+      {% else %}
+      <li class="page-item inactive">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><</a>
+      </li>
+      {% endif %}
+    </li>
+    {% for p in object_list.paginator.page_range %}
+    {% if object_list.namber == p %} 
+          <li class="page-link rounded-l-md active" aria-current="page">{{ p }}</li>
+      {% elif p >= object_list.number|add:-2 and p <= object_list.number|add:2 %} 
+          <li class="page-item rounded-l-md" >
+           <a class="page-link rounded-l-md" href="{{ request.path }}?page={{ p }}">{{ p }}</a>
+</li>
+    {% endif %}
+
+    {% endfor %}
+    {% if object_list.has_next %}
+<a class="page-link rounded-l-md" href="{{ request.path }}?page={{ object_list.next_page_number }}"> Next </a>
+<a class="page-link rounded-l-md" href="{{ request.path }}?page={{ object_list.paginator.num_pages }}">Last</a>
+{% endif %} 
+  </ul>
+     
+</nav>
+</div>
